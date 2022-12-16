@@ -14,8 +14,13 @@
 <div class="container-sm">
     <nav class="navbar bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand">Navbar</a>
+        <a class="navbar-brand" href="{% url 'index' %}">IN DA DELIVERY CLUB</a>
+        <a class="nav-link" href="{% url 'orders' %}">Orders</a>
+        <a class="nav-link" href="{% url 'employees' %}">Employees</a>
+        <a class="nav-link" href="{% url 'restaurants' %}">Restaurants</a>
+
         <form class="d-flex" role="search">
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
             <a class="nav-link" href="{% url 'sign' %}">Log in</a>
         </form>
       </div>

@@ -1,0 +1,15 @@
+{% extends 'deliveryApp/base.html' %}
+
+{% block content %}
+
+    {% for o in orders %}
+
+        <p>{{o.create_time}}</p>
+
+        {% for d in dishes %}
+        <p>{{d.dish_name}}</p>
+        {% endfor %}
+        <a href="#" class="btn btn-primary">Edit</a>
+
+    {% endfor %}
+{% endblock %}

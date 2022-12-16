@@ -1,0 +1,16 @@
+{% extends 'deliveryApp/base.html' %}
+
+{% block content %}
+
+<h3>
+    {{restaurant_dict.items[1]}}
+    {% for r in restaurant_dict %}
+        {{r.restaurant_name}}
+    {% endfor %}
+    no longer work with u...
+</h3>
+
+
+<a href="{% url 'index' %}" class="btn btn-primary">Back to homepage</a>
+
+{% endblock %}

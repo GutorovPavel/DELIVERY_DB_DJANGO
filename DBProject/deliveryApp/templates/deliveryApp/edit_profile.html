@@ -1,0 +1,16 @@
+{% extends 'deliveryApp/base.html' %}
+
+{% block content %}
+
+{% for c in client_info %}
+    <p>{{c.first_name}} {{c.last_name}}, {{c.phone}}, {{c.address}}, {{c.email}}</p>
+{% endfor %}
+
+<form action="." method="post" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+    <p>{{error}}</p>
+</form>
+
+{% endblock %}

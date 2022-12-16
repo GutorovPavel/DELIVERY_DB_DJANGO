@@ -1,0 +1,12 @@
+{% extends 'deliveryApp/base.html' %}
+
+{% block content %}
+
+    {% for c in client_info %}
+
+        <p>{{c.first_name}} {{c.last_name}}, {{c.phone}}, {{c.address}}, {{c.email}}</p>
+        <a href="{% url 'edit' c.user_id %}" class="btn btn-primary">Edit</a>
+
+
+    {% endfor %}
+{% endblock %}
