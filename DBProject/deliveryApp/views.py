@@ -123,11 +123,22 @@ class Order(View):
             dish_ids.append(dish['dish_id'])
 
         with connection.cursor() as cursor:
+            cursor.execute("select max(order_id) from orders")
+            o = cursor.fetchall()[0][0] + 1
+
+        with connection.cursor() as cursor:
             cursor.execute(f"INSERT INTO orders(create_time, deliver_time, client_id, status_id, total_price) " +
                            f"VALUES('{datetime.date.today()} {datetime.datetime.now().strftime('%H:%M:%S')}', null, 1, 1, {price});")
+        with connection.cursor() as cursor:
+            for i in range(len(dish_ids)):
+                cursor.execute(f"INSERT INTO orders_dishes(order_id, dish_id) VALUES ({o}, {dish_ids[i]})")
+
+        with connection.cursor() as cursor:
+            cursor.execute(f"select dish_name from orders_dishes join dishes using(dish_id) where order_id = {o}")
+            dishes = dictfetchall(cursor)
 
         context = {
-            'dishes': order_items,
+            'dishes': dishes,
             'price': price,
         }
         return render(request, PAGE_PATH + 'submit_order.html', context=context)
