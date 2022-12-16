@@ -1,0 +1,13 @@
+{% extends 'deliveryApp/base.html' %}
+
+{% block content %}
+
+{% for d in dishes %}
+<h1>{{d}}</h1>
+{% endfor %}
+
+<h3>{{price}}</h3>
+
+<a href="{% url 'index' %}" class="btn btn-primary">Back to homepage</a>
+
+{% endblock %}

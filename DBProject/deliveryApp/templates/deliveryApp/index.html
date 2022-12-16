@@ -1,0 +1,16 @@
+{% extends 'deliveryApp/base.html' %}
+
+{% block content %}
+    {% for r in rests %}
+
+    <div class="card">
+<!--      <img src="..." class="card-img-top" alt="...">-->
+      <div class="card-body">
+        <p class="card-title">{{r.restaurant_name}}</p>
+        <a href="{% url 'restaurant' r.restaurant_id 1 %}" class="btn btn-primary">Go</a>
+      </div>
+    </div>
+
+    {% endfor %}
+    <h1>{{i}}</h1>
+{% endblock %}
